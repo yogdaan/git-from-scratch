@@ -41,4 +41,15 @@ gfs.prototype.rollback = function(number){
 	else if(this.right) this.right.rollback(number);
 }
 
+gfs.prototype.drop = function(number){
+	if(this.left.number === number){
+		this.left = this.left.left;
+	}
+	else if(this.right.number === number){
+		this.right = this.right.right;
+	}
+	else if(this.left) this.left.drop(number);
+	else if(this.right) this.right.drop(number);
+}
+
 module.exports = gfs;
