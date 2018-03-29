@@ -1,9 +1,10 @@
-function gfs(value,branch){
+function gfs(value,branch,number){
 	this.value = value;
 	this.right = null;
 	this.left = null;
 	this.branch = this.branch || 'master';
 	this.unstaged = null;
+	this.number = number || 1;
 }
 
 gfs.prototype.add = function(value){
@@ -17,12 +18,12 @@ gfs.prototype.add = function(value){
 gfs.prototype.commit = function(){
 	if(!this.unstaged) console.log("Changes are not staged");
 	else if(this.branch === 'master'){
-		if(!this.left) this.left = new gfs(this.unaddd);
-		else this.left.commit(this.unaddd);
+		if(!this.left) this.left = new gfs(this.unstaged,this.branch,this.number + 1);
+		else this.left.commit(this.unstaged);
 	}
 	else{
-		if(!this.right) this.right = new gfs(this.unaddd);
-		else this.right.commit(this.unaddd);
+		if(!this.right) this.right = new gfs(this.unstaged,this.branch,this.number + 1);
+		else this.right.commit(this.unstaged);
 	}
 }
 
@@ -31,19 +32,13 @@ gfs.prototype.commitNewBranch = function(value,branch){
 	else this.right.commitNewBranch(value,branch);
 }
 
-/*
-var git = new gfs(3);
-git.commit(2);
-git.commit(1);
-git.commit(5);
-git.commit(4);
-
-//console.log(git);
-a = git;
-while(a.left){
-	console.log(a.left);
-	a = a.left;
+gfs.prototype.rollback = function(number){
+	if(this.number === number){
+		this.left = null;
+		this.right = null;
+	}
+	else if(this.left) this.left.rollback(number);
+	else if(this.right) this.right.rollback(number);
 }
-*/
 
 module.exports = gfs;
