@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 function gfs(value,branch,number){
 	this.value = value;
 	this.right = null;
@@ -5,6 +7,9 @@ function gfs(value,branch,number){
 	this.branch = this.branch || 'master';
 	this.unstaged = null;
 	this.number = number || 1;
+	if(!fs.existsSync('.gfs')){
+		fs.mkdirSync('.gfs');
+	};
 }
 
 gfs.prototype.add = function(value){
@@ -25,6 +30,15 @@ gfs.prototype.commit = function(){
 		if(!this.right) this.right = new gfs(this.unstaged,this.branch,this.number + 1);
 		else this.right.commit(this.unstaged);
 	}
+
+	fs.writeFile('.gfs/g.fs',this,function(err){
+		if(err){
+			console.log(err);
+		}
+		else{
+			console.log('commit added');
+		}
+	});
 }
 
 gfs.prototype.commitNewBranch = function(value,branch){
