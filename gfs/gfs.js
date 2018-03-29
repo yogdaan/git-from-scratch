@@ -3,16 +3,26 @@ function gfs(value,branch){
 	this.right = null;
 	this.left = null;
 	this.branch = this.branch || 'master';
+	this.unstaged = null;
 }
 
-gfs.prototype.commit = function(value){
-	if(this.branch === 'master'){
-		if(!this.left) this.left = new gfs(value);
-		else this.left.commit(value);
+gfs.prototype.add = function(value){
+	if(!this.left && !this.right){
+		this.unstaged = value;
+	}
+	else if(this.branch === 'master') this.left.add(value);
+	else this.right.add(value);
+}
+
+gfs.prototype.commit = function(){
+	if(!this.unstaged) console.log("Changes are not staged");
+	else if(this.branch === 'master'){
+		if(!this.left) this.left = new gfs(this.unaddd);
+		else this.left.commit(this.unaddd);
 	}
 	else{
-		if(!this.right) this.right = new gfs(value);
-		else this.right.commit(value);
+		if(!this.right) this.right = new gfs(this.unaddd);
+		else this.right.commit(this.unaddd);
 	}
 }
 

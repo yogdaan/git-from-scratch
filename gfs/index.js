@@ -3,8 +3,11 @@ const gfs = require('./gfs');
 // start by creating a new git
 
 const git = new gfs(1);
-git.commit(2);
-git.commit(3);
+git.add(2);
+git.commit();
+git.add(3);
+git.commit();
+console.log(git);
 
 var tempGit = git;
 while(tempGit.left){
