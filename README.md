@@ -8,6 +8,8 @@ It is just a trial where I will try to figure out how `git` `may` work. Since I 
 interested in reading the original mirror of @git so I though of challenging myself a bit.
 
 ## Vision
+`A git that everyone can understand`. It will have the necessary documentation about the hypothesis
+proposed for the project
 Since It is just a timepass project, therefore I will be using it to `Version Control` a simple 
 file that contains data as
 ```
