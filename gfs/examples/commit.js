@@ -29,7 +29,7 @@ make sure to `add` your work before commiting it
 
 git.commit();
 
-console.log(git);
+git.log();
 
 /* make sure you get a JSON object :
 
