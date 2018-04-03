@@ -13,77 +13,56 @@ function gfs(value,branch,number){
 }
 
 gfs.prototype.add = function(value){
-	if(!this.left && !this.right){
+	if(!this.left){
 		this.unstaged = value;
+	}else{
+		this.left.add(value);
 	}
-	else if(this.branch === 'master') this.left.add(value);
-	else this.right.add(value);
 }
 
 gfs.prototype.commit = function(){
-	if(!this.unstaged) console.log("Changes are not staged");
-	/*else if(this.unstaged){
-	     console.log(JSON.parse(fs.readFileSync('.gfs/g.fs','utf8')));
-	}*/
-	else if(this.branch === 'master'){
-		if(!this.left){
-		    this.left = new gfs(this.unstaged,this.branch,this.number + 1);
-		    this.compile();
+	if(this.unstaged){
+		if(this.unstaged){
+			this.left = new gfs(this.unstaged,'master',this.number + 1);
+			return console.log('commit added');
+		}else{
+			 return console.log('Please use git.add(change) to add changes');
 		}
-		else this.left.commit(this.unstaged);
+	}else if(this.left){
+		return this.left.commit();
 	}
-	else{
-		if(!this.right){
-		    this.right = new gfs(this.unstaged,this.branch,this.number + 1);
-		    this.compile();
-		}
-		else this.right.commit(this.unstaged);
-	}
-}
-
-gfs.prototype.commitNewBranch = function(value,branch){
-	if(!this.right) this.right = new gfs(value,branch);
-	else this.right.commitNewBranch(value,branch);
 }
 
 gfs.prototype.rollback = function(number){
 	if(this.number === number){
 		this.left = null;
 		this.right = null;
-		this.compile();
-	}
-	else if(this.left) this.left.rollback(number);
-	else if(this.right) this.right.rollback(number);
+		return this.compile();
+	}else return this.left.rollback(number);
 }
 
 gfs.prototype.drop = function(number){
 	if(this.left.number === number){
 		this.left = this.left.left;
-		this.complie();
+		return this.compile();
+	}else{
+		if(this.left) return this.left.drop(number);
+		else return console.log(Number(number).toString() + ' is not a valid commit');
 	}
-	else if(this.right.number === number){
-		this.right = this.right.right;
-		this.compile();
-	}
-	else if(this.left) this.left.drop(number);
-	else if(this.right) this.right.drop(number);
 }
 
 gfs.prototype.compile = function(){
-    fs.writeFile('.gfs/g.fs',JSON.stringify(this),function(err){
-        if(err){
-            console.log(err);
-        }else{
-            console.log('commit history modified');
-        }
-    });
+	fs.writeFile('.gfs/g.fs',JSON.stringify(this),function(err){
+		if(err) return console.log(err);
+		else return console.log('commit history modified');
+	});
 }
 
 gfs.prototype.log = function(){
-    fs.readFile('.gfs/g.fs',function(err,data){
-        if(err) console.log(err);
-        else console.log(data);
-    });
+	fs.readFile('.gfs/g.fs',function(err,data){
+		if(err) return console.log(err);
+		else return console.log(data);
+	});
 }
 
 module.exports = gfs;
