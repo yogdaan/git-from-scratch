@@ -21,6 +21,9 @@ gfs.prototype.add = function(value){
 }
 
 gfs.prototype.commit = function(){
+	if(this.left){
+		return this.left.commit();
+	}
 	if(this.unstaged){
 		if(this.unstaged){
 			this.left = new gfs(this.unstaged,'master',this.number + 1);
@@ -28,8 +31,6 @@ gfs.prototype.commit = function(){
 		}else{
 			 return console.log('Please use git.add(change) to add changes');
 		}
-	}else if(this.left){
-		return this.left.commit();
 	}
 }
 
@@ -59,9 +60,9 @@ gfs.prototype.compile = function(){
 }
 
 gfs.prototype.log = function(){
-	fs.readFile('.gfs/g.fs',function(err,data){
+	fs.readFile('.gfs/g.fs','utf8',function(err,data){
 		if(err) return console.log(err);
-		else return console.log(data);
+		else return console.log(JSON.parse(data));
 	});
 }
 
