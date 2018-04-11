@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,9 +8,21 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 })
 export class TerminalComponent implements OnInit {
 
-  constructor() { }
+	commands = ["git init","git add ."]
+	cli = ''
+
+  constructor(private renderer: Renderer) { }
 
   ngOnInit() {
+  	const element = this.renderer.selectRootElement('#input-cli')
+		setTimeout(() => element.focus(), 0)
+  }
+
+  executeCommand($event){
+  	if($event.which === 13){
+  		this.commands.push(this.cli)
+  		this.cli = ''
+  	}
   }
 
 }
