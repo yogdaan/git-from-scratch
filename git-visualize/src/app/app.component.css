@@ -1,0 +1,12 @@
+#tree{
+	float: right;
+	background-color: purple;
+	color: white;
+	margin-left: -20px;
+}
+
+#terminal{
+	float: left;
+	background-color: black;
+	margin-left: 10px;
+}
