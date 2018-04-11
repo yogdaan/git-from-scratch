@@ -1,5 +1,15 @@
-<div class="">
-	<p>
-	  terminal works!
-	</p>
+<div id="terminal">
+  <div id="topbar">
+    wow
+  </div>
+  <div id="mainTerm">
+    <ul>
+      <li *ngFor="let command of commands;">
+        <span class="user-command"><span class="admin">git@yogdaan $~ </span>{{command}}</span>
+      </li>
+      <li>
+         <span class="user-command"><span class="admin">git@yogdaan $~ </span><input id="input-cli" type="text" width="100" [(ngModel)]="cli" (keypress)="executeCommand($event)" name="cli"></span>
+      </li>
+    </ul> 
+  </div>
 </div>
