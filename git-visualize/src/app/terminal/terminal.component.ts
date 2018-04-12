@@ -1,5 +1,6 @@
-import { Component, OnInit, Renderer } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { Component, OnInit, Renderer2 } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommunicateService } from '../communicate.service';
 
 @Component({
   selector: 'app-terminal',
@@ -8,21 +9,21 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 })
 export class TerminalComponent implements OnInit {
 
-	commands = ["git init","git add ."]
-	cli = ''
+  commands = this.comm.getCommands();
+  cli = '';
 
-  constructor(private renderer: Renderer) { }
+  constructor(private renderer: Renderer2, private comm: CommunicateService) { }
 
   ngOnInit() {
-  	const element = this.renderer.selectRootElement('#input-cli')
-		setTimeout(() => element.focus(), 0)
+    const element = this.renderer.selectRootElement('#input-cli');
+    setTimeout(() => element.focus(), 0);
   }
 
-  executeCommand($event){
-  	if($event.which === 13){
-  		this.commands.push(this.cli)
-  		this.cli = ''
-  	}
+  executeCommand($event) {
+    if ($event.which === 13) {
+      this.comm.addCommand(this.cli);
+      this.cli = '';
+    }
   }
 
 }
