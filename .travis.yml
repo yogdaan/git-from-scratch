@@ -25,4 +25,5 @@ after_success:
 - bash <(curl -s https://codecov.io/bash)
 
 cache:
+  bundler: true
   directories: node_modules
