@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TreeComponent } from './tree/tree.component';
+import { TerminalComponent } from './terminal/terminal.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',

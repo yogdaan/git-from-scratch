@@ -8,7 +8,7 @@
         <span class="user-command"><span class="admin">git@yogdaan $~ </span>{{command}}</span>
       </li>
       <li>
-         <span class="user-command"><span class="admin">git@yogdaan $~ </span><input id="input-cli" type="text" width="100" [(ngModel)]="cli" (keypress)="executeCommand($event)" name="cli"></span>
+         <span class="user-command"><span class="admin">git@yogdaan $~ </span><input id="input-cli" type="text" width="100" (ngModel)="cli" (keypress)="executeCommand($event)" name="cli"></span>
       </li>
     </ul> 
   </div>

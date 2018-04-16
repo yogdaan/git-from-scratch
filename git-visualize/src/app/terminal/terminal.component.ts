@@ -1,11 +1,13 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommunicateService } from '../communicate.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
-  styleUrls: ['./terminal.component.css']
+  styleUrls: ['./terminal.component.css'],
+  providers: [ CommunicateService ]
 })
 export class TerminalComponent implements OnInit {
 

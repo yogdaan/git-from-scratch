@@ -7,7 +7,6 @@ import { TreeComponent } from './tree/tree.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { CommunicateService } from './communicate.service';
 
-
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -23,9 +22,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     NgbModule.forRoot()
   ],
   providers: [CommunicateService],
-  bootstrap: [AppComponent],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
