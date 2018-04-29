@@ -21,7 +21,7 @@ export class TerminalComponent implements OnInit {
     setTimeout(() => element.focus(), 0);
   }
 
-  executeCommand($event) {
+  executeCommand =($event) => {
     if ($event.which === 13) {
       this.comm.addCommand(this.cli);
       this.cli = '';

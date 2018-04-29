@@ -5,28 +5,30 @@ export class CommunicateService {
 
   commands = ['git log', 'git commit'];
   git = {
-    'add' : {
-      'message' : '',
-      'params' : 1
+    'add': {
+      'message': '',
+      'params': 1
     },
-    'commit' : {
-      'message' : 'Added to Git Tree',
-      'params' : 2 // -m & commit_message
+    'commit': {
+      'message': 'Added to Git Tree',
+      'params': 2 // -m & commit_message
     },
-    'log' : {
+    'log': {
       'message': 'some logs',
-      'params' : 0
+      'params': 0
     },
-    'error' : 'Some wrong command there!'
+    'error': 'Some wrong command there!'
   };
 
   constructor() { }
 
-  getCommands() {
-  return this.commands;
+  getCommands = () => {
+    return this.commands;
   }
 
-  addCommand(command) {
-  this.commands.push(command);
+  addCommand = (command) => {
+    console.log(command)
+    this.commands.push(command);
+    // console.log(this.commands);
   }
 }
