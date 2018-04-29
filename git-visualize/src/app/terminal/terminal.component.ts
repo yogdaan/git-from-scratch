@@ -1,5 +1,4 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommunicateService } from '../communicate.service';
 import { FormsModule } from '@angular/forms';
 

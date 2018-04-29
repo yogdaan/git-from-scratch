@@ -27,8 +27,6 @@ export class CommunicateService {
   }
 
   addCommand = (command) => {
-    console.log(command)
     this.commands.push(command);
-    // console.log(this.commands);
   }
 }
