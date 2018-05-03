@@ -1,11 +1,7 @@
-div{
-	margin: 0 auto;
-	align-content: left;
-	height: 90vh;
-}
-
-p{
-	color: white;
+.terminal{
+	float: left;
+	margin-top: 30px;
+	width: 100%;
 }
 
 ul{
@@ -14,7 +10,7 @@ ul{
 }
 
 .admin{
-	color: lightgreen;
+	color: green;
 }
 
 .user-command{
@@ -29,22 +25,9 @@ input{
 	width: 70%;
 }
 
-#mainTerm{
+.mainTerm{
 	overflow-y: scroll;
-	height: 85vh;
-}
-
-#topbar{
-	width: 100%;
-	height: 25px;
-	background-color: lightgray;
-}
-
-#terminal{
-	float: left;
-	width: 100%;
+	height: 70vh;
 	background-color: black;
-	margin-left: 10px;
-	margin-top: 30px;
-	height: 90vh;
+	color: green;
 }

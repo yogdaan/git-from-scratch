@@ -1,5 +1,4 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommunicateService } from '../communicate.service';
 import { FormsModule } from '@angular/forms';
 
@@ -21,7 +20,7 @@ export class TerminalComponent implements OnInit {
     setTimeout(() => element.focus(), 0);
   }
 
-  executeCommand($event) {
+  executeCommand =($event) => {
     if ($event.which === 13) {
       this.comm.addCommand(this.cli);
       this.cli = '';

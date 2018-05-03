@@ -7,7 +7,7 @@ import { TreeComponent } from './tree/tree.component';
 import { TerminalComponent } from './terminal/terminal.component';
 import { CommunicateService } from './communicate.service';
 
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AppMaterialModule } from './app-material/app-material.module';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     FormsModule,
-    NgbModule.forRoot()
+    AppMaterialModule
   ],
   providers: [CommunicateService],
   bootstrap: [AppComponent]
