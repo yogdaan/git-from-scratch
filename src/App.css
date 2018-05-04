@@ -1,0 +1,79 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  background: #4f5d75;
+}
+
+* {
+  box-sizing: border-box;
+}
+#root {
+  height: 100%;
+  width: 100%;
+}
+.App {
+  display: grid;
+  grid-template: 60px 1fr / 100%;
+  width: 100vw;
+  height: 100vh;
+}
+
+header {
+  background: #fff;
+  border-bottom: 2px solid #bfc0c0;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: #ef8354;
+}
+
+.main_wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  overflow: scroll;
+}
+main {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+  padding: 30px 0;
+  grid-gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  max-width: 1024px;
+  width: 100%;
+  padding: 0 15px;
+}
+
+.output {
+  background: #fafafa;
+  margin: 15px;
+  padding: 15px;
+  color: #999;
+}
+
+.terminal {
+  border-radius: 5px;
+  height: 330px;
+  overflow: hidden;
+  margin: 15px;
+  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.1);
+}
+.terminal-base {
+  min-height: 300px;
+  max-height: 300px;
+}
+
+.shadow {
+  border-radius: 5px;
+  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.1);
+}
