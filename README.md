@@ -18,7 +18,7 @@ file that contains data as
 3
 4
 ```
-Any change in the file will be checked and then stored. I will make it a heavy VCS and tnen 
+Any change in the file will be checked and then stored. I will make it a heavy VCS and then 
 make it comply with space efficiency (ik it is difficult to do, when you're going on with 
 the intuition that your hypothesis is correct :P)
 
