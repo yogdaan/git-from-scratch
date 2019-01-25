@@ -25,8 +25,8 @@ the intuition that your hypothesis is correct :P)
 
 ## Language
 
-I will be using Javascript for making this project. I don't have any specific reason for 
-choosing this language. Let's just go with the flow :P
+I will be using javascript for making this project. I don't have any specific reason for 
+choosing this language. Let's just go with the flow.
 
 ## Author
 
